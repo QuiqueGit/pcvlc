@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('css/estilos.css')}}">
   </head>
   <body>
   	<!--navbar-->
@@ -20,8 +21,37 @@
 	  			<li class="list-inline-item"><a href="/ofertas">Ofertas</a>&emsp;</li>
 	  		</ul>
   		</div>
-  		<div>
-  			<span><i class="fa fa-user"></i> <a href="/login">Login</a></span>
+  		<div>  			
+  			<span><i class="fa fa-user"></i> <a data-toggle="modal" data-target="#myModal">Login</a></span>
+
+			  <!-- The Modal -->
+			  <div class="modal fade" id="myModal">
+			    <div class="modal-dialog">
+			      <div class="modal-content">
+			      
+			        <!-- Modal Header -->
+			        <div class="modal-header">
+			          <h4 class="modal-title">Login</h4>
+			          <button type="button" class="close" data-dismiss="modal">&times;</button>
+			        </div>
+			        
+			        <!-- Modal body -->
+			        <div class="modal-body">
+			          <form action="login" method="POST">
+			          	{{ csrf_field() }} <!--Método anti-ataques Cross-site request forgery o falsificación de petición en sitios cruzados. Este método añadirá un campo oculto ya configurado con los valores necesarios.-->
+			          	<label for='nombre'>Usuario:&nbsp;&nbsp;&nbsp; </label>
+					    <input type="text" name="nombre" id="nombre" required></input><br>
+					    <label for='pass'>Password: </label>
+					    <input type="text" name="pass" id="pass" required></input><br>
+					    <button class="btn btn-sm btn-primary" type="submit">Login</button>
+					    <span><a href="registro">¡Regístrate!</a></span>
+					  </form>
+			        </div>
+
+			      </div>
+			    </div>
+			  </div>
+			 
   			<span><i class="fa fa-shopping-cart"></i> <a href="/carrito">Carrito</a></span>
   		</div>
 	</nav>
@@ -43,7 +73,9 @@
 				</div>
 			</aside>
 			<!--contenido-->
-			<div class="col-10 content bg-info">
+			<div class="col-10 content bg-faded">
+
+				@yield('content')
 										
 			</div>
 			<!--end contenido-->
