@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('content')
+@section('carousel-novedades')
 	<!--carousel, tamaño del banner 1600x300 aprox.-->
 	<div id="demo" class="carousel slide" data-ride="carousel">
 

@@ -29,6 +29,16 @@ class UserController extends Controller
     	return view('registro');    	
     }
 
+    public function checkUserName(){
+
+    	$user = DB::select('SELECT name FROM users WHERE name="'.$_POST['name'].'"');
+
+    	if(empty($user)) return view()
+
+    	else
+
+    }
+
     public function crearUser(){ //cuando se pulsa el botón registro
 
     	DB::insert('INSERT INTO users (name,email,password) VALUES  ("'.$_POST["nombre"].'","'.$_POST["email"].'","'.$_POST["pass"].'")');

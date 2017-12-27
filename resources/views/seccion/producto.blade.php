@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('content')
+@section('productos')
 
 	<div class="col-12 container">
 

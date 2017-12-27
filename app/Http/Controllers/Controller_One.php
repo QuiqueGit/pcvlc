@@ -16,27 +16,31 @@ class Controller_One extends Controller
 
     public function showProduct($id){
 
-    	return view('producto')->with('id',$id); //Le pasamos la id del producto a la vista, que viene de la ruta producto/id
-    }
+    	$title = "Producto";
 
-    public function showComponentes(){
+    	return view('seccion.producto',compact('id','title')); //Le pasamos la id del producto a la vista, que viene de la ruta producto/id
+    }    
 
-    	$tipos = DB::select('SELECT DISTINCT tipo FROM componentes');
+    public function showData($tabla){
 
-    	$componentes = DB::select('SELECT * FROM componentes');
+    	$tipos = DB::select('SELECT DISTINCT tipo FROM '.$tabla.'');
+
+    	$data = DB::select('SELECT * FROM '.$tabla.'');
+
+    	$title = $tabla;
 
     	if (isset($_GET['actualizar'])) {
 
     		if ($_GET["selector"] != "todo") {
 
-    			$componentes = DB::select('SELECT * FROM componentes WHERE tipo="'.$_GET['selector'].'"');
+    			$data = DB::select('SELECT * FROM '.$tabla.' WHERE tipo="'.$_GET['selector'].'"');
 
-    			return view('componentes',compact('tipos','componentes'));    			
+    			return view('seccion.datosTabla',compact('tipos','data','title'));    			
     		}
     		
     	}  			
 
-    	return view('componentes',compact('tipos','componentes'));
+    	return view('seccion.datosTabla',compact('tipos','data','title'));
     }
 
 }

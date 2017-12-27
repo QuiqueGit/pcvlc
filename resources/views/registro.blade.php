@@ -7,7 +7,7 @@
 	<h1 class="text-muted">Nuevo Usuario</h1>
 	<hr>
 		
-	<form method="post">
+	<form action="" method="post">
 
 		{{ csrf_field() }}
 		<table>

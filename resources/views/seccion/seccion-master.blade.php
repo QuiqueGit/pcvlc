@@ -76,11 +76,26 @@
 			<!--contenido-->
 			<div class="col-10 content bg-faded">
 
-				@yield('carousel-novedades')
+				<div class="text-muted text-center mt-3">
+					<div class="row d-flex justify-content-between">
+						<h1 class="pl-3">{{ucFirst($title)}}</h1><!-- ucFirst() - función php que pone la primera letra en mayúscula -->			
+						<div class="pr-5"> 
+							<form method="get">
+								<select class="custom-select" name="selector" id="selector">
+									<option value="todo">Filtrar por...</option>	
+									@foreach($tipos as $key)
+										<option>{{$key->tipo}}</option>
+									@endforeach									
+									<input type="submit" name="actualizar" value="Actualizar" class="btn btn-sm btn-outline-info ml-2">				
+								</select>	
+							</form>
+						</div>		
+					</div>
+					<hr>
+					
+					@yield('content')
 
-				@yield('productos')
-
-				@yield('content')
+				</div>
 										
 			</div>
 			<!--end contenido-->
